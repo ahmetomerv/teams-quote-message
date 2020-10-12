@@ -33,45 +33,47 @@ function addQuoteMessage() {
 }
 
 function quoteMessageButtonClickHandler(event) {
-   const messageText = event.target.offsetParent.querySelector('[data-tid="messageBodyContent"]').innerText;
-   const messageSenderName = event.target.offsetParent.querySelector('[data-tid="threadBodyDisplayName"]').innerText;
-
-   const blockquote = document.createElement('blockquote');
-   blockquote.setAttribute('itemtype', 'http://schema.skype.com/Reply');
-
-   const topRowParagraph = document.createElement('p');
-   blockquote.appendChild(topRowParagraph);
-
-   const topRowParagraphBreak = document.createElement('b');
-   topRowParagraphBreak.style.display = 'flex';
-   topRowParagraphBreak.style.justifyContent = 'space-between';
-   topRowParagraph.appendChild(topRowParagraphBreak);
-
-   const nameSpan = document.createElement('span');
-   const closeSpan = document.createElement('span');
-   nameSpan.style.fontSize = 'small';
-   nameSpan.innerText = messageSenderName.trim();
-   closeSpan.innerText = 'x';
-   closeSpan.style.cursor = 'pointer';
-   closeSpan.classList.add('teams-custom-quote-message-close');
-   closeSpan.addEventListener('click', replyMessageClickHandler);
-   topRowParagraphBreak.appendChild(nameSpan);
-   topRowParagraphBreak.appendChild(closeSpan);
-
-   const textPreviewParagraph = document.createElement('p');
-   textPreviewParagraph.innerText = messageText;
-   blockquote.appendChild(textPreviewParagraph);
-
-   const mainQuoteDiv = document.createElement('div');
-   mainQuoteDiv.appendChild(blockquote);
-
-   const composeTextarea = document.querySelector('.cke_wysiwyg_div');
-   const composePlaceholder = document.querySelector('.ts-text-watermark');
-   composePlaceholder.style.display = 'none';
-   composeTextarea.insertBefore(mainQuoteDiv, composeTextarea.firstChild);
+   if (!composeHasActiveQuoteMessage()) {
+      const messageText = event.target.offsetParent.querySelector('[data-tid="messageBodyContent"]').innerText;
+      const messageSenderName = event.target.offsetParent.querySelector('[data-tid="threadBodyDisplayName"]').innerText;
    
-   const composerParent = document.querySelector('.cke_contents');
-   composerParent.style.height = blockquote.offsetHeight + 40 + 'px';
+      const blockquote = document.createElement('blockquote');
+      blockquote.setAttribute('itemtype', 'http://schema.skype.com/Reply');
+   
+      const topRowParagraph = document.createElement('p');
+      blockquote.appendChild(topRowParagraph);
+   
+      const topRowParagraphBreak = document.createElement('b');
+      topRowParagraphBreak.style.display = 'flex';
+      topRowParagraphBreak.style.justifyContent = 'space-between';
+      topRowParagraph.appendChild(topRowParagraphBreak);
+   
+      const nameSpan = document.createElement('span');
+      const closeSpan = document.createElement('span');
+      nameSpan.style.fontSize = 'small';
+      nameSpan.innerText = messageSenderName.trim();
+      closeSpan.innerText = 'x';
+      closeSpan.style.cursor = 'pointer';
+      closeSpan.classList.add('teams-custom-quote-message-close');
+      closeSpan.addEventListener('click', replyMessageClickHandler);
+      topRowParagraphBreak.appendChild(nameSpan);
+      topRowParagraphBreak.appendChild(closeSpan);
+   
+      const textPreviewParagraph = document.createElement('p');
+      textPreviewParagraph.innerText = messageText;
+      blockquote.appendChild(textPreviewParagraph);
+   
+      const mainQuoteDiv = document.createElement('div');
+      mainQuoteDiv.appendChild(blockquote);
+   
+      const composeTextarea = document.querySelector('.cke_wysiwyg_div');
+      const composePlaceholder = document.querySelector('.ts-text-watermark');
+      composePlaceholder.style.display = 'none';
+      composeTextarea.insertBefore(mainQuoteDiv, composeTextarea.firstChild);
+      
+      const composerParent = document.querySelector('.cke_contents');
+      composerParent.style.height = blockquote.offsetHeight + 40 + 'px';
+   }
 }
 
 function replyMessageClickHandler() {
@@ -90,6 +92,10 @@ function sendButtonClickHandler() {
    if (replyMessageCloseButton) {
       replyMessageCloseButton.innerText = '';
    }
+}
+
+function composeHasActiveQuoteMessage() {
+   return document.querySelector('.cke_wysiwyg_div').querySelector('blockquote');
 }
 
 function appendCustomStyles() {

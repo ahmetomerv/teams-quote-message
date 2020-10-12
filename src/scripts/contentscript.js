@@ -1,12 +1,9 @@
 window.addEventListener('load', () => {
    setTimeout(() => {
+      const observeTarget = document.querySelector('.ts-message-content') || document;
       appendCustomStyles();
       addQuoteMessage();
-      const observeTarget = document.querySelector('.ts-message-content');
-
-      if (observeTarget) {
-         initializeDOMChangeListener(observeTarget);
-      }
+      initializeDOMChangeListener(observeTarget);
    }, 4000);
 });
 
@@ -98,7 +95,11 @@ function sendButtonClickHandler() {
 function appendCustomStyles() {
    const head = document.getElementsByTagName('head')[0];
    const style = document.createElement('style');
-   const declarations = document.createTextNode('.teams-custom-quote-message-button:hover { color: #a2c0f5 !important; } .teams-custom-quote-message-close:hover { opacity: .5 !important; } ');
+   const declarations = document.createTextNode(`
+      .teams-custom-quote-message-button:hover { color: #a2c0f5 !important; }
+      .teams-custom-quote-message-close:hover { opacity: .5 !important; }
+      .ts-message-thread-body .message-body-top-row .top-row-text-container { justify-content: space-between; }
+   `);
 
    style.type = 'text/css';
 

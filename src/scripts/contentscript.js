@@ -136,10 +136,14 @@ function initializeDOMChangeListener(observeTarget) {
    };
 
    const mutationObserverCallback = function(mutations, observer) {
-      for (let i = 0; i < mutations.length; i++) {
-         for (let x = 0; x < mutations[i].addedNodes.length; x++) {
-            if (mutations[i].addedNodes[x].classList && mutations[i].addedNodes[x].classList.contains('thread-body')) {
-               addQuoteMessage();
+      if (mutations) {
+         for (let i = 0; i < mutations.length; i++) {
+            if (mutations[i].addedNodes) {
+               for (let x = 0; x < mutations[i].addedNodes.length; x++) {
+                  if (mutations[i].addedNodes[x].classList && mutations[i].addedNodes[x].classList.contains('thread-body')) {
+                     addQuoteMessage();
+                  }
+               }
             }
          }
       }

@@ -57,9 +57,7 @@ function quoteMessageButtonClickHandler(event) {
    closeSpan.innerText = 'x';
    closeSpan.style.cursor = 'pointer';
    closeSpan.classList.add('teams-custom-quote-message-close');
-   closeSpan.addEventListener('click', (e) => {
-      replyMessageClickHandler(e, blockquote);
-   });
+   closeSpan.addEventListener('click', replyMessageClickHandler);
    topRowParagraphBreak.appendChild(nameSpan);
    topRowParagraphBreak.appendChild(closeSpan);
 
@@ -79,14 +77,14 @@ function quoteMessageButtonClickHandler(event) {
    composerParent.style.height = blockquote.offsetHeight + 40 + 'px';
 }
 
-function replyMessageClickHandler(event, blockquote) {
-   const composer = document.querySelector('.cke_wysiwyg_div');
-   const composerParent = document.querySelector('.cke_contents');
+function replyMessageClickHandler() {
+   const compose = document.querySelector('.cke_wysiwyg_div');
+   const composeParent = document.querySelector('.cke_contents');
    const composePlaceholder = document.querySelector('.ts-text-watermark');
    
-   composer.innerHTML = '<div> <br> </div>';
+   compose.innerHTML = '<div> <br> </div>';
    composePlaceholder.style.display = 'block';
-   composerParent.style.height = '33px';
+   composeParent.style.height = '33px';
 }
 
 function sendButtonClickHandler() {

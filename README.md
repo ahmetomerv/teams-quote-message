@@ -1,11 +1,11 @@
 # Clean Twitter
-A browser extension to remove the unwanted Tweets from your timeline, such as Liked Tweets, Retweets and Reply Tweets.
+Browser extension to quote messages in Microsoft Teams web app.
 
 ### To install and use it in your local machine:
 
-- `$ git clone https://github.com/ahmetomerv/twitter-received-reply-remover.git`
+- `$ git clone https://github.com/ahmetomerv/teams-quote-message.git`
 
-- `$ cd twitter-received-reply-remover`
+- `$ cd teams-quote-message`
 
 - `$ npm install`
 
@@ -25,7 +25,7 @@ A browser extension to remove the unwanted Tweets from your timeline, such as Li
 
 - Click "Load unpacked"
 
-- Select the `build/chrome` folder in `twitter-received-reply-remover` project folder
+- Select the `build/chrome` folder in `teams-quote-message` project folder
 
 ---
 [MIT License](https://opensource.org/licenses/MIT)

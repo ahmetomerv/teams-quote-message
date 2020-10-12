@@ -1,4 +1,7 @@
 # Teams Quote Message
+
+![Teams Quote Message gif](https://media.giphy.com/media/HPZmmTbVgdI7MKHXdL/giphy.gif)
+
 Browser extension to quote messages in Microsoft Teams web app.
 
 ### To install and use it in your local machine:

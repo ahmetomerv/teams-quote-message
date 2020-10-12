@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
 
 function addQuoteMessage() {
    const threadBodyMediaList = document.querySelectorAll('[data-tid="threadBodyMedia"]');
-   const sendButton = document.getElementById('send-message-button');
+   const sendButton = document.querySelector('.compose-send-discard');
 
    sendButton.addEventListener('click', sendButtonClickHandler);
 

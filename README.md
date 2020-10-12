@@ -1,4 +1,4 @@
-# Clean Twitter
+# Teams Quote Message
 Browser extension to quote messages in Microsoft Teams web app.
 
 ### To install and use it in your local machine:

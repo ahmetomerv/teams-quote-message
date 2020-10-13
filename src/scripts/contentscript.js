@@ -1,17 +1,21 @@
 window.addEventListener('load', () => {
    setTimeout(() => {
       const observeTarget = document.querySelector('.ts-message-content') || document;
+      const sendButton = document.querySelector('.compose-send-discard');
+
+      if (sendButton) {
+         sendButton.addEventListener('click', sendButtonClickHandler);
+      }
+      
       appendCustomStyles();
       addQuoteMessage();
       initializeDOMChangeListener(observeTarget);
+      
    }, 4000);
 });
 
 function addQuoteMessage() {
    const threadBodyMediaList = document.querySelectorAll('[data-tid="threadBodyMedia"]');
-   const sendButton = document.querySelector('.compose-send-discard');
-
-   sendButton.addEventListener('click', sendButtonClickHandler);
 
    if (threadBodyMediaList) {
       threadBodyMediaList.forEach(threadBody => {

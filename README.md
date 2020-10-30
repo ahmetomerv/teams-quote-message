@@ -22,6 +22,8 @@ Browser extension to quote messages in Microsoft Teams web app.
 
 ### To load the extension in Chrome
 
+- Build by running `$ npm run {browser}-build`
+
 - Go to `chrome://extensions` in Chrome
 
 - Enable "Developer Mode"
